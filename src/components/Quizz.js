@@ -30,7 +30,7 @@ function Quizz({questionnaire}) {
                 <Question question={questionnaire[questionNumber].question}/>
                 {
                     questionnaire[questionNumber].choices.map(
-                        (elem, index) => <Reponse value={elem} onReponseSelect={setReponseSelect} index={index} key={index}/>
+                        (elem, index) => <Reponse value={elem} onReponseSelect={setReponseSelect} index={index} key={index} selected={reponseSelect}/>
                     )
                 }
                 <button onClick={() => nextQuestion()}>Next</button>
