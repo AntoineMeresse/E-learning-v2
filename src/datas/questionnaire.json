@@ -1,0 +1,79 @@
+[
+    {
+      "question":
+        "Quel bijou pouvez-vous porter lorsque vous travaillez dans une entreprise alimentaire ?",
+      "choices": ["un piercing au nez", "un piercing au nombril", "une montre"],
+      "correctAnswer": 1
+    },
+    {
+      "question":
+        "Pouvez-vous porter un gilet par dessus vos vêtements de travail ?",
+      "choices": ["oui", "non", "uniquement s'il s'agit d'un gilet en coton"],
+      "correctAnswer": 1
+    },
+    {
+      "question": "Comment mettez-vous correctement un filet à cheveux ?",
+      "choices": [
+        "vous mettez uniquement un filet à cheveux lorsque la longueur dépasse de 1 cm",
+        "vous mettez le filet à cheveux de sorte qu'aucun cheveu ne dépasse",
+        "les oreilles doivents rester dégagés"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "question":
+        "Pouvez-vous vous sécher les mains avec une serviette après les avoir lavées ?",
+      "choices": ["oui", "non", "uniquement avec une serviette en coton"],
+      "correctAnswer": 2
+    },
+    {
+      "question":
+        "Lorsque vous êtes enrhumé et que vous devez vous moucher, pouvez-vous ensuite vous remettre au travail ?",
+      "choices": [
+        "oui",
+        "non",
+        "aprés vous être mouché, vous devez d'abord vous laver les mains avant de vous remettre au travail"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "question":
+        "Devez-vous vous laver les mains avant de prendre votre pause déjeuner ?",
+      "choices": [
+        "oui",
+        "non",
+        "aprés vous être mouché, vous devez d'abord vous laver les mains avant de vous remettre au travail"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "question": "Devez-vous vous laver les mains avant de mettre vos gants ?",
+      "choices": ["oui", "non", "uniquement lorsque les sutisules sont sales"],
+      "correctAnswer": 0
+    },
+    {
+      "question":
+        "Vous allez vider la poubelle. Devez-vous vous laver les mains avant de  reprendre le travail ?",
+      "choices": ["oui", "non", "pas s'il s'agit d'une poubelle à pédale"],
+      "correctAnswer": 0
+    },
+    {
+      "question":
+        "Que faites-vous à coup sur lorsque votre journée de travail est terminée ?",
+      "choices": [
+        "vous jetez votre filet à cheveux à la poubelle",
+        "vous rangez votre filet à cheveux pour le lendemain",
+        "vous emportez votre filet à cheveux pour le lendemain"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "question": "A quelle régle d'hygiène ce pictogramme correspond-il ?",
+      "choices": [
+        "porter un pull chaud lorsqu'il fait froid",
+        "porter des vêtements de travail fermés",
+        "seuls les vêtements deux pièces sont autotrisés"
+      ],
+      "correctAnswer": 1
+    }
+  ]

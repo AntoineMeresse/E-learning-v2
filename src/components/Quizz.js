@@ -1,25 +1,41 @@
 import React, {useState} from 'react'
-//import questionnaire from '../datas/questionnaire.json'
 import Question from './Question'
 import Reponse from './Reponse'
 
 function Quizz({questionnaire}) {
     
-    const [reponseSelect , setReponseSelect] = useState("Null")
+    const [reponseSelect , setReponseSelect] = useState(-1);
+    const [questionNumber, setQuestionNumber] = useState(0);
+    const [compteur, setCompteur] = useState(0);
 
-    function onReponseSelect(value) {
-        console.log(value);
-        //setReponseSelect(event.currentTarget.value);
+    function nextQuestion() {
+        if (reponseSelect !== -1) {
+
+            if(reponseSelect === questionnaire[questionNumber].correctAnswer) {
+                setCompteur(compteur+1);
+            }
+
+            setQuestionNumber(questionNumber+1);
+            setReponseSelect(-1);
+        }
     }
     
     return (
         <div className="quizz">
             <h1>I'm a quizz component</h1>
-            <p>Reponse Selectionnee : {reponseSelect}</p>
-            <Question question="That's a default question"/>
-            <Reponse value="A" onReponseSelect={onReponseSelect}/>
-            <Reponse value="B" onReponseSelect={onReponseSelect}/>
-            <Reponse value="C" onReponseSelect={onReponseSelect}/>
+            <p>Score : {compteur} / {questionnaire.length}</p>
+            { (questionNumber < questionnaire.length) && (
+                <>    
+                <p>Reponse Selectionnee : {reponseSelect} | {questionNumber}/{questionnaire.length}</p>
+                <Question question={questionnaire[questionNumber].question}/>
+                {
+                    questionnaire[questionNumber].choices.map(
+                        (elem, index) => <Reponse value={elem} onReponseSelect={setReponseSelect} index={index} key={index}/>
+                    )
+                }
+                <button onClick={() => nextQuestion()}>Next</button>
+                </>
+            )}
         </div>
     )
 }
