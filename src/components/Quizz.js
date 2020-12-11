@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import Question from './Question'
 import Reponse from './Reponse'
+import { Card , Button } from 'react-bootstrap'
 
 function Quizz({questionnaire}) {
     
@@ -61,25 +62,27 @@ function Quizz({questionnaire}) {
     return (
         <div className="quizz">
             <p>Score : {compteur} / {questionnaire.length}</p>
+            <p>Reponse Selectionnee : {reponseSelect} | {questionNumber+1}/{questionnaire.length}</p>
+            <p>Timers : {timers.toString()}</p>
+            <Card>
             { questionNumber < 0 ? 
             (
-                <button onClick={() => startQuizz()}>Start</button>
+                <Button onClick={() => startQuizz()}>Start</Button>
             ) : 
             (
                 (questionNumber < questionnaire.length) && (
                     <>    
-                    <p>Reponse Selectionnee : {reponseSelect} | {questionNumber+1}/{questionnaire.length}</p>
                     <Question question={questionnaire[questionNumber].question}/>
                     {
                         questionnaire[questionNumber].choices.map(
                             (elem, index) => <Reponse value={elem} onReponseSelect={setReponseSelect} index={index} key={index} selected={reponseSelect}/>
                         )
                     }
-                    <button onClick={() => nextQuestion()}>Next</button>
+                    <Button onClick={() => nextQuestion()}>Next</Button>
                     </>
                 )
             )}
-            <p>Timers : {timers.toString()}</p>
+            </Card>
         </div>
     )
 }
