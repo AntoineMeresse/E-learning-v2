@@ -65,7 +65,7 @@ function Quizz({quizzId, userId , questionnaire}) {
 
     async function handleSubmit() {
         try {
-            await saveQuizzRes(quizzId,userId,compteur,questionnaire.length,timers);
+            await saveQuizzRes(quizzId,userId,compteur,questionnaire.length,timers, currentDate.getTime());
         }
         catch {
             console.log("Error when saving res");
