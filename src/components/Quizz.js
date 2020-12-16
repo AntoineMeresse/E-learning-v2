@@ -33,6 +33,7 @@ function Quizz({questionnaire}) {
      * Function to start the quizz
      */
     function startQuizz() {
+        setPreviousTime(currentDate.getTime())
         addTimers();
         setQuestionNumber(0);
     }
