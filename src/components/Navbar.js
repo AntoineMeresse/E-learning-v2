@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { Link } from 'react-router-dom' 
 import { useAuth } from '../contexts/AuthContext'
 import { useHistory } from 'react-router-dom'
+import './Navbar.css';
 
 function Navbar() {
     
@@ -23,11 +24,14 @@ function Navbar() {
     
     return (
         <div className="navbar">
-            <ul>
+            <ul className="ul_items">
                 <li className="nav-item"><Link to="/">Home</Link></li>
                 { currentUser ? 
                     (
-                        <li className="nav-item">{currentUser.email}<button onClick={handleLogout}>Logout</button></li>
+                        <li className="nav-item">
+                            <span>{currentUser.email}</span>
+                            <button onClick={handleLogout}>Logout</button>
+                        </li>
                     ) 
                     :
                     (
