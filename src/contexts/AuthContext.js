@@ -33,6 +33,10 @@ export function AuthProvider({children}) {
         );
     }
 
+    function saveQuizzRes(quizzID, userID, score, nbQuestion,  time) {
+        console.log({quizzID, userID, score, nbQuestion, time});
+    }
+
     function logout() {
         return auth.signOut();
     }
@@ -51,6 +55,7 @@ export function AuthProvider({children}) {
         signup,
         login,
         logout,
+        saveQuizzRes,
     }
     
     return (

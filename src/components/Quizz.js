@@ -2,8 +2,9 @@ import React, {useState} from 'react'
 import Question from './Question'
 import Reponse from './Reponse'
 import { Card , Button } from 'react-bootstrap'
+import { useAuth } from '../contexts/AuthContext'
 
-function Quizz({questionnaire}) {
+function Quizz({quizzId, userId , questionnaire}) {
     
     const currentDate = new Date();
 
@@ -13,6 +14,8 @@ function Quizz({questionnaire}) {
     const [timers, setTimers] = useState([]);
     const [previousTime, setPreviousTime] = useState();
     
+    const { saveQuizzRes } = useAuth();
+
     /**
      * Function to select the next Question
      */
@@ -59,6 +62,15 @@ function Quizz({questionnaire}) {
         }
         setPreviousTime(currentTime)
     }
+
+    async function handleSubmit() {
+        try {
+            await saveQuizzRes(quizzId,userId,compteur,questionnaire.length,timers);
+        }
+        catch {
+            console.log("Error when saving res");
+        }
+    }
     
     return (
         <div className="quizz">
@@ -71,7 +83,7 @@ function Quizz({questionnaire}) {
                 <Button onClick={() => startQuizz()}>Start</Button>
             ) : 
             (
-                (questionNumber < questionnaire.length) && (
+                (questionNumber < questionnaire.length) ? (
                     <>    
                     <Question question={questionnaire[questionNumber].question}/>
                     {
@@ -81,6 +93,9 @@ function Quizz({questionnaire}) {
                     }
                     <Button onClick={() => nextQuestion()}>Next</Button>
                     </>
+                ) :
+                (
+                    <Button onClick={() => handleSubmit()}>Finish</Button>
                 )
             )}
             </Card>
