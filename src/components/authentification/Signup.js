@@ -9,6 +9,9 @@ function Signup() {
     const passwordRef = useRef()
     const passwordConfirmRef = useRef()
 
+    const lastnameRef = useRef()
+    const firstnameRef = useRef()
+
     const { signup } = useAuth();
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
@@ -25,7 +28,7 @@ function Signup() {
         try {
             setError("");
             setLoading(true);
-            await signup(emailRef.current.value, passwordRef.current.value);
+            await signup(emailRef.current.value, passwordRef.current.value, firstnameRef.current.value, lastnameRef.current.value);
             history.push('/');
         }
         catch {
@@ -44,6 +47,14 @@ function Signup() {
                         <Form.Group id="email">
                             <Form.Label>Email</Form.Label>
                             <Form.Control type="email" required ref={emailRef}/>
+                        </Form.Group>
+                        <Form.Group id="firstname">
+                            <Form.Label>Prénom</Form.Label>
+                            <Form.Control type="text" required ref={firstnameRef}/>
+                        </Form.Group>
+                        <Form.Group id="lastname">
+                            <Form.Label>Nom</Form.Label>
+                            <Form.Control type="text" required ref={lastnameRef}/>
                         </Form.Group>
                         <Form.Group id="password">
                             <Form.Label>Password</Form.Label>
