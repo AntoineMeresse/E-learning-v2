@@ -59,7 +59,7 @@ function AdminDashBoard() {
     return (
         <div className="admin-dashboard"> 
             <h1>Temps de réponse pour le quizz 1</h1> 
-            <select value={userId} onChange={handleChange}>   
+            <select value={userId} onChange={handleChange} className="w-100 my-2">   
                 <option value=''>Select an user</option>
                 {
                     datas.res && Object.entries(datas.res).map((elem, index) => <option value={elem[0]} key={index}>{elem[0]})</option>)
@@ -77,14 +77,3 @@ function AdminDashBoard() {
 }
 
 export default AdminDashBoard
-
-/*
-
-datasets: [
-    {
-        label : 'resultats',
-        data : [12,2,8],
-        backgroundColor : 'blue',
-    }
-]
-*/
