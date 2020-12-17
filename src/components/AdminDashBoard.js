@@ -57,12 +57,8 @@ function AdminDashBoard() {
 
 
     return (
-        <div className="admin-dashboard">
-            <p>Users list : </p>
-            <p>Quizz id : {quizzId}</p>
-            <p>User id : {userId}</p>
-            <p>{datas.questionNumber}</p>
-            
+        <div className="admin-dashboard"> 
+            <h1>Temps de réponse pour le quizz 1</h1> 
             <select onChange={handleChange}>   
                 <option value=''>Select an user</option>
                 {
