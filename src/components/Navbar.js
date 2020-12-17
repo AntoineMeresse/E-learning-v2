@@ -28,10 +28,13 @@ function Navbar({setHome}) {
                 <li className="nav-item" onClick={() => setHome(0)}><Link to="/">Home</Link></li>
                 { currentUser ? 
                     (
-                        <li className="nav-item">
-                            <span>{currentUser.email}</span>
-                            <button onClick={handleLogout}>Logout</button>
-                        </li>
+                        <>
+                            <li className="nav-item"><Link to="/admin">Admin Dashboard</Link></li>
+                            <li className="nav-item">
+                                <span>{currentUser.email}</span>
+                                <button onClick={handleLogout}>Logout</button>
+                            </li>
+                        </>
                     ) 
                     :
                     (
