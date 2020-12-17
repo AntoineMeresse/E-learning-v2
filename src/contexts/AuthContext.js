@@ -48,6 +48,10 @@ export function AuthProvider({children}) {
         )
     }
 
+    function getQuizzRes(quizzID) {
+        return firestore.collection("quizz").doc(quizzID).get();
+    }
+
     function logout() {
         return auth.signOut();
     }
@@ -67,6 +71,7 @@ export function AuthProvider({children}) {
         login,
         logout,
         saveQuizzRes,
+        getQuizzRes,
     }
     
     return (
