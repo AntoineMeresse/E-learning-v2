@@ -59,16 +59,12 @@ function AdminDashBoard() {
     return (
         <div className="admin-dashboard"> 
             <h1>Temps de réponse pour le quizz 1</h1> 
-            <select onChange={handleChange}>   
+            <select value={userId} onChange={handleChange}>   
                 <option value=''>Select an user</option>
                 {
                     datas.res && Object.entries(datas.res).map((elem, index) => <option value={elem[0]} key={index}>{elem[0]})</option>)
                 }
             </select>
-
-            {
-                userId !== '' && console.log("Test : ", datas.res[userId])
-            }
 
             <Bar
                 data = {{
