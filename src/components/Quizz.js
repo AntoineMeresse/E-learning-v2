@@ -63,9 +63,18 @@ function Quizz({quizzId, userId , questionnaire, setHome}) {
         setPreviousTime(currentTime)
     }
 
+    function getFullDateFormat(date){
+        let res = "";
+        res += date.toLocaleDateString()
+        res += " - "
+        res += date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+        return res;
+    }
+
     async function handleSubmit() {
         try {
-            await saveQuizzRes(quizzId,userId,compteur,questionnaire.length,timers, currentDate.getTime());
+            let c = currentDate;
+            await saveQuizzRes(quizzId,userId,compteur,questionnaire.length,timers, c.getTime(), getFullDateFormat(c));
             setHome(0);
         }
         catch {
