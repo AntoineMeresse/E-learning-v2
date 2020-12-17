@@ -9,7 +9,7 @@
 .navbar > ul {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -29,7 +29,7 @@
 }
 
 @media (max-width: 800px) {
-  .nav-itemitem > a {
+  .nav-item > a {
     color: white;
     text-decoration: none;
     font-size: 15px;
