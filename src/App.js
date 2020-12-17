@@ -7,16 +7,20 @@ import { BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 import Dashboard from './components/Dashboard';
 import PrivateRoute from './components/PrivateRoute'
 import Navbar from './components/Navbar';
+import React, {useState} from 'react'
 
 function App() {
+  
+  const [home, setHome] = useState(0);
+  
   return (
     <AuthProvider>
       <Router>
-        <Navbar/>
+        <Navbar setHome={setHome}/>
         <Container className="d-flex align-items-center justify-content-center" style={{minHeight : "90vh"}}>
           <div className="w-100" style={{maxWidth: '800px'}}>
                 <Switch>
-                  <PrivateRoute exact path="/" component={Dashboard}/>
+                  <PrivateRoute exact path="/" component={() => <Dashboard home={home} setHome={setHome}/>}/>
                   <Route path="/signup" component={Signup}/>
                   <Route path="/login" component={Login}/>
                 </Switch>

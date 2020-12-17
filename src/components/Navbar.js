@@ -4,7 +4,7 @@ import { useAuth } from '../contexts/AuthContext'
 import { useHistory } from 'react-router-dom'
 import './Navbar.css';
 
-function Navbar() {
+function Navbar({setHome}) {
     
     const [error , setError] = useState('');
     const { currentUser, logout } = useAuth();
@@ -25,7 +25,7 @@ function Navbar() {
     return (
         <div className="navbar">
             <ul className="ul_items">
-                <li className="nav-item"><Link to="/">Home</Link></li>
+                <li className="nav-item" onClick={() => setHome(0)}><Link to="/">Home</Link></li>
                 { currentUser ? 
                     (
                         <li className="nav-item">
