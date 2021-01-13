@@ -15,6 +15,8 @@ function AdminDashBoard() {
     const [datas, setDatas] = useState({});
 
     const { getQuizzRes } = useAuth();
+
+    const [chartInfo, setChartInfo] = useState('');
     
     async function fetchDataQuizz() {
         const doc = await getQuizzRes(quizzId);
@@ -42,7 +44,6 @@ function AdminDashBoard() {
 
     return (
         <div className="admin-dashboard"> 
-            <h1>Temps de réponse pour le quizz 1</h1>
             <select value={userId} onChange={handleChange} className="w-100 my-2">   
                 <option value=''>Select an user</option>
                 {
@@ -50,8 +51,14 @@ function AdminDashBoard() {
                 }
             </select>
 
-            <ChartTimeToAnswer datas={datas} userId={userId} createListOfLength={createListOfLength}/>
-            <ChartCorrectAnswer datas={datas} userId={userId} createListOfLength={createListOfLength}/>
+            <select value={chartInfo} onChange={(event)=> setChartInfo(event.target.value)} className="w-100 my-2">
+                <option value=''>Select what type of info you want to see</option>
+                <option value="time">Time</option>
+                <option value="answer">Answers</option>
+            </select>
+
+            { chartInfo === "time" ?  <ChartTimeToAnswer datas={datas} userId={userId} createListOfLength={createListOfLength}/> : null}
+            { chartInfo === "answer" ? <ChartCorrectAnswer datas={datas} userId={userId} createListOfLength={createListOfLength}/> : null}
         </div>
     )
 }
