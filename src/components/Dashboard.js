@@ -1,15 +1,30 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Quizz from './Quizz';
 import questionnaire from '../datas/questionnaire.json'
 import { useAuth } from '../contexts/AuthContext'
 import { Button } from 'react-bootstrap';
-//import { useHistory } from 'react-router-dom'
 
 function Dashboard({home, setHome}) {
     
-    //const [error , setError] = useState('');
-    const { currentUser } = useAuth();
-    //const history = useHistory();
+    const [userFullName, setUserFullName] = useState('Test');
+
+    const { currentUser, getUserInfos } = useAuth();
+    
+    const userId = currentUser.uid;
+
+    async function fetchRealName(userId) {
+        const doc = await getUserInfos(userId);
+        if (!doc.exists) console.log(`User (${userId}) doesn't exist`);
+        else {
+            const d = doc.data();
+            const name = d.prenom+" "+d.nom
+            setUserFullName(name);
+        }
+    }
+
+    useEffect(() => {
+        fetchRealName(userId);
+    }, [])
 
     return (
         <div className="dashboard">
@@ -23,7 +38,7 @@ function Dashboard({home, setHome}) {
                 </>
             ) :
             (
-             <Quizz quizzId="quizz1" userId={currentUser.uid} questionnaire={questionnaire} setHome={setHome}/>
+             <Quizz quizzId="quizz1" userId={userId} questionnaire={questionnaire} setHome={setHome} userName={userFullName}/>
             )
             }
         </div>

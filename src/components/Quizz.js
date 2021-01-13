@@ -4,7 +4,7 @@ import Reponse from './Reponse'
 import { Card , Button } from 'react-bootstrap'
 import { useAuth } from '../contexts/AuthContext'
 
-function Quizz({quizzId, userId , questionnaire, setHome}) {
+function Quizz({quizzId, userId , questionnaire, setHome, userName}) {
     
     const currentDate = new Date();
 
@@ -74,7 +74,7 @@ function Quizz({quizzId, userId , questionnaire, setHome}) {
     async function handleSubmit() {
         try {
             let c = currentDate;
-            await saveQuizzRes(quizzId,userId,compteur,questionnaire.length,timers, c.getTime(), getFullDateFormat(c));
+            await saveQuizzRes(quizzId,userId,compteur,questionnaire.length,timers, c.getTime(), getFullDateFormat(c), userName);
             setHome(0);
         }
         catch {

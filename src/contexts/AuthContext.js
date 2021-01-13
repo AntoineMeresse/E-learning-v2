@@ -33,18 +33,21 @@ export function AuthProvider({children}) {
         );
     }
 
-    function saveQuizzRes(quizzID, userID, score, nbQuestion, time, dateID, dateString) {
+    function saveQuizzRes(quizzID, userID, score, nbQuestion, time, dateID, dateString, userName) {
         console.log({quizzID, userID, score, nbQuestion, time, dateID, dateString});
         return firestore.collection("quizz").doc(quizzID).set(
             {
                 questionNumber : nbQuestion,
                 res : {
                     [userID] : {
-                        [dateID.toString()] : {
-                            score : score,
-                            dateString : dateString,
-                            nbQuestion : nbQuestion,
-                            time : time
+                        name : userName,
+                        datas : {
+                            [dateID.toString()] : {
+                                score : score,
+                                dateString : dateString,
+                                nbQuestion : nbQuestion,
+                                time : time
+                            }
                         }
                     }
                 }
@@ -54,6 +57,10 @@ export function AuthProvider({children}) {
 
     function getQuizzRes(quizzID) {
         return firestore.collection("quizz").doc(quizzID).get();
+    }
+
+    function getUserInfos(userId) {
+        return firestore.collection("users").doc(userId).get();
     }
 
     function logout() {
@@ -76,6 +83,7 @@ export function AuthProvider({children}) {
         logout,
         saveQuizzRes,
         getQuizzRes,
+        getUserInfos,
     }
     
     return (

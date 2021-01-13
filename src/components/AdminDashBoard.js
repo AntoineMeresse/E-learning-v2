@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import { Bar } from 'react-chartjs-2';
 import { useAuth } from '../contexts/AuthContext';
+import OptionUserIdToName from './OptionUserIdToName.js'
 
 function AdminDashBoard() {
 
@@ -41,8 +42,8 @@ function AdminDashBoard() {
         let res = [];
         let index = 0;
         if (userId !== '') {
-            for (const [key, value] of Object.entries(datas.res[userId])) {
-                console.log(`${key}: ${value} (index : ${index})`);
+            for (const [key, value] of Object.entries(datas.res[userId].datas)) {
+                //console.log(`${key}: ${value} (index : ${index})`);
                 let tmp = {
                     label : value.dateString,
                     data : value.time.slice(1),
@@ -55,14 +56,13 @@ function AdminDashBoard() {
         return res;
     }
 
-
     return (
         <div className="admin-dashboard"> 
-            <h1>Temps de réponse pour le quizz 1</h1> 
+            <h1>Temps de réponse pour le quizz 1</h1>
             <select value={userId} onChange={handleChange} className="w-100 my-2">   
                 <option value=''>Select an user</option>
                 {
-                    datas.res && Object.entries(datas.res).map((elem, index) => <option value={elem[0]} key={index}>{elem[0]})</option>)
+                    datas.res && Object.entries(datas.res).map((elem, index) => <OptionUserIdToName elem={elem} index={index} key={index}/>)
                 }
             </select>
 
