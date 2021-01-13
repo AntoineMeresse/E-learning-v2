@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 
-import { Bar } from 'react-chartjs-2';
 import { useAuth } from '../contexts/AuthContext';
 import OptionUserIdToName from './OptionUserIdToName.js'
+
+// Import different charts
+import ChartTimeToAnswer from './charts/ChartTimeToAnswer'
 
 function AdminDashBoard() {
 
@@ -12,8 +14,7 @@ function AdminDashBoard() {
     const [datas, setDatas] = useState({});
 
     const { getQuizzRes } = useAuth();
-    const colors = ['red', 'blue', 'green', 'yellow'];
-
+    
     async function fetchDataQuizz() {
         const doc = await getQuizzRes(quizzId);
         if (!doc.exists) console.log(`Document (${quizzId}) doesn't exist`);
@@ -38,24 +39,6 @@ function AdminDashBoard() {
         return res;
     }
 
-    function createDatasets(){
-        let res = [];
-        let index = 0;
-        if (userId !== '') {
-            for (const [key, value] of Object.entries(datas.res[userId].datas)) {
-                //console.log(`${key}: ${value} (index : ${index})`);
-                let tmp = {
-                    label : value.dateString,
-                    data : value.time.slice(1),
-                    backgroundColor : colors[index],
-                };
-                index++;
-                res.push(tmp);
-            }
-        }
-        return res;
-    }
-
     return (
         <div className="admin-dashboard"> 
             <h1>Temps de réponse pour le quizz 1</h1>
@@ -66,12 +49,7 @@ function AdminDashBoard() {
                 }
             </select>
 
-            <Bar
-                data = {{
-                    labels : createListOfLength(datas.questionNumber),
-                    datasets : createDatasets(),
-                }} 
-            />
+            <ChartTimeToAnswer datas={datas} userId={userId} createListOfLength={createListOfLength}/>
         </div>
     )
 }
