@@ -4,7 +4,8 @@ import { useAuth } from '../contexts/AuthContext';
 import OptionUserIdToName from './OptionUserIdToName.js'
 
 // Import different charts
-import ChartTimeToAnswer from './charts/ChartTimeToAnswer'
+import ChartTimeToAnswer from './charts/ChartTimeToAnswer';
+import ChartCorrectAnswer from './charts/ChartCorrectAnswer';
 
 function AdminDashBoard() {
 
@@ -50,6 +51,7 @@ function AdminDashBoard() {
             </select>
 
             <ChartTimeToAnswer datas={datas} userId={userId} createListOfLength={createListOfLength}/>
+            <ChartCorrectAnswer datas={datas} userId={userId} createListOfLength={createListOfLength}/>
         </div>
     )
 }

@@ -33,7 +33,7 @@ export function AuthProvider({children}) {
         );
     }
 
-    function saveQuizzRes(quizzID, userID, score, nbQuestion, time, dateID, dateString, userName) {
+    function saveQuizzRes(quizzID, userID, score, nbQuestion, time, dateID, dateString, userName, correctAnswers) {
         console.log({quizzID, userID, score, nbQuestion, time, dateID, dateString});
         return firestore.collection("quizz").doc(quizzID).set(
             {
@@ -46,7 +46,8 @@ export function AuthProvider({children}) {
                                 score : score,
                                 dateString : dateString,
                                 nbQuestion : nbQuestion,
-                                time : time
+                                time : time,
+                                answers : correctAnswers
                             }
                         }
                     }

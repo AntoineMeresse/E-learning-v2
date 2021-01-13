@@ -14,6 +14,8 @@ function Quizz({quizzId, userId , questionnaire, setHome, userName}) {
     const [timers, setTimers] = useState([]);
     const [previousTime, setPreviousTime] = useState();
     
+    const [correctAnswers, setCorrectAnswers] = useState([]);
+    
     const { saveQuizzRes } = useAuth();
 
     /**
@@ -22,8 +24,11 @@ function Quizz({quizzId, userId , questionnaire, setHome, userName}) {
     function nextQuestion() {
         if (reponseSelect !== -1) {
             if(reponseSelect === questionnaire[questionNumber].correctAnswer) {
+                // Cas ou la réponse est correcte
                 setCompteur(compteur+1);
+                setCorrectAnswers([...correctAnswers, 1]);
             }
+            else setCorrectAnswers([...correctAnswers, 0]);
             setQuestionNumber(questionNumber+1);
             setReponseSelect(-1);
             
@@ -74,7 +79,7 @@ function Quizz({quizzId, userId , questionnaire, setHome, userName}) {
     async function handleSubmit() {
         try {
             let c = currentDate;
-            await saveQuizzRes(quizzId,userId,compteur,questionnaire.length,timers, c.getTime(), getFullDateFormat(c), userName);
+            await saveQuizzRes(quizzId,userId,compteur,questionnaire.length,timers, c.getTime(), getFullDateFormat(c), userName, correctAnswers);
             setHome(0);
         }
         catch {
@@ -87,6 +92,8 @@ function Quizz({quizzId, userId , questionnaire, setHome, userName}) {
             <p>Score : {compteur} / {questionnaire.length}</p>
             <p>Reponse Selectionnee : {reponseSelect} | {questionNumber+1}/{questionnaire.length}</p>
             <p>Timers : {timers.toString()}</p>
+            <p>CorrectAnswers : {correctAnswers.toString()}</p>
+            
             <Card>
             { questionNumber < 0 ? 
             (
