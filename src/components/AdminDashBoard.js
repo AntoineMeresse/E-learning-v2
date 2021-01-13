@@ -62,7 +62,7 @@ function AdminDashBoard() {
             <select value={userId} onChange={handleChange} className="w-100 my-2">   
                 <option value=''>Select an user</option>
                 {
-                    datas.res && Object.entries(datas.res).map((elem, index) => <OptionUserIdToName elem={elem} index={index} key={index}/>)
+                    datas.res && Object.entries(datas.res).map((elem, index) => <OptionUserIdToName elem={elem} key={index}/>)
                 }
             </select>
 
