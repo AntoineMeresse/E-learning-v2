@@ -6,6 +6,7 @@ import OptionUserIdToName from './OptionUserIdToName.js'
 // Import different charts
 import ChartTimeToAnswer from './charts/ChartTimeToAnswer';
 import ChartCorrectAnswer from './charts/ChartCorrectAnswer';
+import ChartScore from './charts/ChartScore';
 
 function AdminDashBoard() {
 
@@ -55,10 +56,12 @@ function AdminDashBoard() {
                 <option value=''>Select what type of info you want to see</option>
                 <option value="time">Time</option>
                 <option value="answer">Answers</option>
+                <option value="score">Score</option>
             </select>
 
             { chartInfo === "time" ?  <ChartTimeToAnswer datas={datas} userId={userId} createListOfLength={createListOfLength}/> : null}
             { chartInfo === "answer" ? <ChartCorrectAnswer datas={datas} userId={userId} createListOfLength={createListOfLength}/> : null}
+            { chartInfo === "score" ? <ChartScore datas={datas} userId={userId}/> : null}
         </div>
     )
 }
