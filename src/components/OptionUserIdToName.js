@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import { useAuth } from '../contexts/AuthContext';
+import React from 'react'
 
 function OptionUserIdToName({elem}) {
 
@@ -8,7 +7,6 @@ function OptionUserIdToName({elem}) {
 
     return (
         <>
-            {console.log(userName)}
             <option value={userId}>{userName}</option>
         </>
     )
