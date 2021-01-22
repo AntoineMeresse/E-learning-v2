@@ -3,7 +3,7 @@
   align-items: center;
 }
 
-p {
+.message > p {
   max-width: 80%;
   min-width: 20%;
   margin-bottom: 12px;
