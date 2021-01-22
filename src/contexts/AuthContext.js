@@ -33,27 +33,27 @@ export function AuthProvider({children}) {
         );
     }
 
-    function saveQuizzRes(quizzID, userID, score, nbQuestion, time, dateID, dateString, userName, correctAnswers) {
+    function saveQuizzRes(quizzID, userID, score, nbQuestion, time, dateID, dateString, userName, correctAnswers, collectif) {
         console.log({quizzID, userID, score, nbQuestion, time, dateID, dateString});
-        return firestore.collection("quizz").doc(quizzID).set(
-            {
-                questionNumber : nbQuestion,
-                res : {
-                    [userID] : {
-                        name : userName,
-                        datas : {
-                            [dateID.toString()] : {
-                                score : score,
-                                dateString : dateString,
-                                nbQuestion : nbQuestion,
-                                time : time,
-                                answers : correctAnswers
-                            }
+        let resJSON = {
+            questionNumber : nbQuestion,
+            res : {
+                [userID] : {
+                    name : userName,
+                    datas : {
+                        [dateID.toString()] : {
+                            score : score,
+                            dateString : dateString,
+                            nbQuestion : nbQuestion,
+                            time : time,
+                            answers : correctAnswers
                         }
                     }
                 }
-            }, { merge: true }
-        )
+            }
+        };
+        if (!collectif) return firestore.collection("quizz").doc(quizzID).set(resJSON, { merge: true })
+        else return firestore.collection("quizzCollectif").doc(quizzID).set(resJSON, { merge: true })
     }
 
     function getQuizzRes(quizzID) {

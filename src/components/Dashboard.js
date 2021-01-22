@@ -41,11 +41,11 @@ function Dashboard({home, setHome}) {
             (
                 home === 1 ? 
                 (
-                    <Quizz quizzId="quizz1" userId={userId} questionnaire={questionnaire} setHome={setHome} userName={userFullName}/>
+                    <Quizz quizzId="quizz1" userId={userId} questionnaire={questionnaire} setHome={setHome} userName={userFullName} collectif={false}/>
                 ) 
                 :
                 (
-                    <QuizzCollectif quizzId="quizz1" userId={userId} questionnaire={questionnaire} setHome={setHome} userName={userFullName}/>
+                    <QuizzCollectif quizzId="quizz1" userId={userId} questionnaire={questionnaire} setHome={setHome} userName={userFullName} collectif={true}/>
                 )
             )
             }
