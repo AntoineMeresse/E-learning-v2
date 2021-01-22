@@ -4,12 +4,14 @@ import './Chat.css'
 import { useAuth } from '../../contexts/AuthContext'
 import {useCollectionData} from 'react-firebase-hooks/firestore';
 
+import ChatMessage from './ChatMessage';
+
 function Chat() {
     
     const [formValue, setFormValue] = useState('');
 
     const { currentUser, messagesRef, query, firestoreTimestamp } = useAuth();
-    const [messages] = useCollectionData(query, {idField: 'id'});
+    const [messages] = useCollectionData(query);
     
     async function sendMessage(event) {
         event.preventDefault();
@@ -33,7 +35,9 @@ function Chat() {
                 <hr></hr>
             </div>
             <div className="chat-messages">
-                
+                { messages &&
+                    messages.map((message) => <ChatMessage text={message.text} isMessageOwner={currentUser.uid === message.uid }/>)
+                }
             </div>
             <form className="chat-form" onSubmit={sendMessage}>
                 <input 
