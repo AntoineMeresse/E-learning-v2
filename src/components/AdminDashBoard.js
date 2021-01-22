@@ -16,7 +16,7 @@ function AdminDashBoard() {
     const [userId, setUserId] = useState('');
     const [datas, setDatas] = useState({});
 
-    const { getQuizzRes } = useAuth();
+    const { getQuizzRes, getAllMessages } = useAuth();
 
     const [chartInfo, setChartInfo] = useState('');
     
@@ -64,7 +64,7 @@ function AdminDashBoard() {
             { chartInfo === "time" ?  <ChartTimeToAnswer datas={datas} userId={userId} createListOfLength={createListOfLength}/> : null}
             { chartInfo === "answer" ? <ChartCorrectAnswer datas={datas} userId={userId} createListOfLength={createListOfLength}/> : null}
             { chartInfo === "score" ? <ChartScore datas={datas} userId={userId}/> : null}
-            { chartInfo === "message" ? <ChartMessage/> : null}
+            { chartInfo === "message" ? <ChartMessage getAllMessages={getAllMessages} /> : null}
         </div>
     )
 }

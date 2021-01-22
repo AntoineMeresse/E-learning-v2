@@ -68,6 +68,10 @@ export function AuthProvider({children}) {
         return firestore.collection("users").doc(userId).get();
     }
 
+    function getAllMessages() {
+        return firestore.collection("messages").get();
+    }
+
     function logout() {
         return auth.signOut();
     }
@@ -92,6 +96,7 @@ export function AuthProvider({children}) {
         messagesRef,
         query,
         firestoreTimestamp,
+        getAllMessages,
     }
     
     return (
