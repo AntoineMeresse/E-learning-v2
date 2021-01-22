@@ -14,7 +14,7 @@ export function AuthProvider({children}) {
     const [loading, setLoading] = useState(true)
 
     const messagesRef = firestore.collection("messages");
-    const query = messagesRef.orderBy('createdAt').limit(25);
+    const query = messagesRef.orderBy('createdAt','desc').limit(25);
     const firestoreTimestamp = firebase.firestore.FieldValue.serverTimestamp();
 
     function signup(email,password, firstname, lastname) {

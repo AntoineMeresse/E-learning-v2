@@ -18,6 +18,9 @@
 
 .chat-messages {
   height: 85%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .chat-form > input {

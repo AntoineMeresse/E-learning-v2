@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import './Chat.css'
 
 import { useAuth } from '../../contexts/AuthContext'
@@ -12,6 +12,8 @@ function Chat({userName}) {
 
     const { currentUser, messagesRef, query, firestoreTimestamp } = useAuth();
     const [messages] = useCollectionData(query);
+
+    const bottomChat = useRef();
     
     async function sendMessage(event) {
         event.preventDefault();
@@ -27,6 +29,8 @@ function Chat({userName}) {
             }
         );
         setFormValue('');
+
+        bottomChat.current.scrollIntoView({ behavior : 'smooth'});
     }
 
     return (
@@ -36,8 +40,9 @@ function Chat({userName}) {
                 <hr></hr>
             </div>
             <div className="chat-messages">
+                <span ref={bottomChat}></span>
                 { messages &&
-                    messages.map((message) => <ChatMessage text={message.text} isMessageOwner={currentUser.uid === message.uid } userName={message.userName}/>)
+                    messages.map((message) => <ChatMessage key={message.id} text={message.text} isMessageOwner={currentUser.uid === message.uid } userName={message.userName}/>)
                 }
             </div>
             <form className="chat-form" onSubmit={sendMessage}>
