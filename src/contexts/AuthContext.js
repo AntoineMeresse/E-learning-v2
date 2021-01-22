@@ -13,6 +13,9 @@ export function AuthProvider({children}) {
     const [currentUser, setCurrentUser] = useState()
     const [loading, setLoading] = useState(true)
 
+    const messagesRef = firestore.collection("messages");
+    const query = messagesRef.orderBy('createdAt').limit(25);
+
     function signup(email,password, firstname, lastname) {
         return auth.createUserWithEmailAndPassword(email,password).then(cred => createUserInfos(cred, firstname, lastname));
     }
@@ -85,6 +88,8 @@ export function AuthProvider({children}) {
         saveQuizzRes,
         getQuizzRes,
         getUserInfos,
+        messagesRef,
+        query,
     }
     
     return (
