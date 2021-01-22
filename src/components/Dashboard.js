@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Quizz from './Quizz';
+import QuizzCollectif from './QuizzCollectif'
 import questionnaire from '../datas/questionnaire.json'
 import { useAuth } from '../contexts/AuthContext'
 import { Button } from 'react-bootstrap';
@@ -34,11 +35,18 @@ function Dashboard({home, setHome}) {
                 <Button className="w-100 mb-1 btn-secondary" onClick={() => console.log("Quizz Collectif")}>Formation</Button>
                 <Button className="w-100 mb-1 btn-secondary" onClick={() => console.log("Quizz Collectif")}>Regles</Button>
                 <Button className="w-100 mb-1 btn-primary"   onClick={() => setHome(1)}>Quizz</Button>
-                <Button className="w-100 mb-1 btn-secondary" onClick={() => console.log("Quizz Collectif")}>QuizzCollectif</Button>
+                <Button className="w-100 mb-1 btn-primary"   onClick={() => setHome(2)}>QuizzCollectif</Button>
                 </>
             ) :
             (
-             <Quizz quizzId="quizz1" userId={userId} questionnaire={questionnaire} setHome={setHome} userName={userFullName}/>
+                home === 1 ? 
+                (
+                    <Quizz quizzId="quizz1" userId={userId} questionnaire={questionnaire} setHome={setHome} userName={userFullName}/>
+                ) 
+                :
+                (
+                    <QuizzCollectif quizzId="quizz1" userId={userId} questionnaire={questionnaire} setHome={setHome} userName={userFullName}/>
+                )
             )
             }
         </div>
