@@ -88,12 +88,7 @@ function Quizz({quizzId, userId , questionnaire, setHome, userName, collectif}) 
     }
     
     return (
-        <div className="quizz">
-            <p>Score : {compteur} / {questionnaire.length}</p>
-            <p>Reponse Selectionnee : {reponseSelect} | {questionNumber+1}/{questionnaire.length}</p>
-            <p>Timers : {timers.toString()}</p>
-            <p>CorrectAnswers : {correctAnswers.toString()}</p>
-            
+        <div className="quizz">         
             <Card>
             { questionNumber < 0 ? 
             (

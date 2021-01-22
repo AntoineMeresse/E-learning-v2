@@ -37,7 +37,6 @@ function Chat({userName}) {
         <div className="chat-collectif">
             <div className="chat-top">
                 <h3>Chat Collectif</h3>
-                <hr></hr>
             </div>
             <div className="chat-messages">
                 <span ref={bottomChat}></span>
