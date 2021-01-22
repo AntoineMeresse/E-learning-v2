@@ -1,4 +1,5 @@
 import React from 'react'
+import './ChatMessage.css'
 
 function ChatMessage({text, isMessageOwner, userName}) {
     
@@ -6,7 +7,12 @@ function ChatMessage({text, isMessageOwner, userName}) {
 
     return (
         <div className={`message ${isOwner}`}>
-            <p>{userName} : {text}</p>
+            <p>
+                { !isMessageOwner && 
+                    <span>{userName} : </span>
+                }
+                {text}
+            </p>
         </div>
     )
 }
