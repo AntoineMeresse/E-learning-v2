@@ -1,6 +1,6 @@
 import React, {useState, useContext, useEffect} from 'react'
 import { auth, firestore } from '../firebase'
-
+import firebase from 'firebase/app'
 
 const AuthContext = React.createContext()
 
@@ -15,6 +15,7 @@ export function AuthProvider({children}) {
 
     const messagesRef = firestore.collection("messages");
     const query = messagesRef.orderBy('createdAt').limit(25);
+    const firestoreTimestamp = firebase.firestore.FieldValue.serverTimestamp();
 
     function signup(email,password, firstname, lastname) {
         return auth.createUserWithEmailAndPassword(email,password).then(cred => createUserInfos(cred, firstname, lastname));
@@ -90,6 +91,7 @@ export function AuthProvider({children}) {
         getUserInfos,
         messagesRef,
         query,
+        firestoreTimestamp,
     }
     
     return (
