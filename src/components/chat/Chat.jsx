@@ -6,7 +6,7 @@ import {useCollectionData} from 'react-firebase-hooks/firestore';
 
 import ChatMessage from './ChatMessage';
 
-function Chat() {
+function Chat({userName}) {
     
     const [formValue, setFormValue] = useState('');
 
@@ -22,7 +22,8 @@ function Chat() {
             {
                 text : formValue,
                 createdAt: firestoreTimestamp,
-                uid
+                uid,
+                userName
             }
         );
         setFormValue('');
@@ -36,7 +37,7 @@ function Chat() {
             </div>
             <div className="chat-messages">
                 { messages &&
-                    messages.map((message) => <ChatMessage text={message.text} isMessageOwner={currentUser.uid === message.uid }/>)
+                    messages.map((message) => <ChatMessage text={message.text} isMessageOwner={currentUser.uid === message.uid } userName={message.userName}/>)
                 }
             </div>
             <form className="chat-form" onSubmit={sendMessage}>

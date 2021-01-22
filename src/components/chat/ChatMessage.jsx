@@ -1,12 +1,12 @@
 import React from 'react'
 
-function ChatMessage({text, isMessageOwner}) {
+function ChatMessage({text, isMessageOwner, userName}) {
     
     const isOwner = (isMessageOwner ? 'sent' : 'received');
 
     return (
         <div className={`message ${isOwner}`}>
-            <p>{text}</p>
+            <p>{userName} : {text}</p>
         </div>
     )
 }

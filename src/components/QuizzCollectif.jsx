@@ -7,7 +7,7 @@ function QuizzCollectif({quizzId, userId , questionnaire, setHome, userName, col
         <div>
             <p>QuizzCollectif</p>
             <Quizz quizzId={quizzId} userId={userId} questionnaire={questionnaire} setHome={setHome} userName={userName} collectif={collectif}/>
-            <Chat/>
+            <Chat userName={userName}/>
         </div>
     )
 }
