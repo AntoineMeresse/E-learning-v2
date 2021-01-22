@@ -1,0 +1,26 @@
+.chat-collectif {
+  position: fixed;
+  top: 6vh;
+  left: 1vh;
+  width: 20vw;
+  height: 90vh;
+  border: 1px black solid;
+  margin-top: 10px;
+}
+
+.chat-top > h3 {
+  text-align: center;
+}
+
+.chat-top {
+  height: 10%;
+}
+
+.chat-messages {
+  height: 85%;
+}
+
+.chat-form > input {
+  width: 90%;
+  margin-left: 4px;
+}
