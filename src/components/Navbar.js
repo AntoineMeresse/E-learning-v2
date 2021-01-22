@@ -31,7 +31,7 @@ function Navbar({setHome}) {
                         <>
                             <li className="nav-item"><Link to="/admin">Admin Dashboard</Link></li>
                             <li className="nav-item">
-                                <span>{currentUser.email}</span>
+                                <span className="nav-big-screen">{currentUser.email}</span>
                                 <button onClick={handleLogout}>Logout</button>
                             </li>
                         </>

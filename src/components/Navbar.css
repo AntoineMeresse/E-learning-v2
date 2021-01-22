@@ -3,7 +3,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  height: 5vh;
+  height: 6vh;
 }
 
 .navbar > ul {
@@ -33,5 +33,14 @@
     color: white;
     text-decoration: none;
     font-size: 15px;
+  }
+
+  .nav-big-screen {
+    display: none;
+  }
+
+  .nav-item > button {
+    height: 22px;
+    font-size: 12px;
   }
 }
