@@ -1,10 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import { Doughnut } from 'react-chartjs-2';
 
-function ChartMessage({getAllMessages}) {
+function ChartMessage({getAllMessages, colors}) {
     
-    const colors = ['red', 'blue', 'green', 'yellow'];
-
     const [data, setData] = useState([]);
     const [labels, setLabels] = useState([]);
 

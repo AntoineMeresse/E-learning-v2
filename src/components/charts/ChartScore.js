@@ -1,10 +1,8 @@
 import React from 'react'
 import { Line } from 'react-chartjs-2';
 
-function ChartScore({datas, userId}) {
+function ChartScore({datas, userId, colors}) {
     
-    const colors = ['red', 'blue', 'green', 'yellow'];
-
     function generateDatas(){
         let score = [];
         let dates = [];

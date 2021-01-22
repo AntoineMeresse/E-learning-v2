@@ -1,10 +1,8 @@
 import React from 'react'
 import { Bar } from 'react-chartjs-2';
 
-function ChartCorrectAnswer({datas, userId, createListOfLength}) {
+function ChartCorrectAnswer({datas, userId, createListOfLength, colors}) {
     
-    const colors = ['red', 'blue', 'green', 'yellow'];
-
     function createDatasets(){
         let res = [];
         let index = 0;

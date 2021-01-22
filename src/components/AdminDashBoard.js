@@ -9,6 +9,9 @@ import ChartCorrectAnswer from './charts/ChartCorrectAnswer';
 import ChartScore from './charts/ChartScore';
 import ChartMessage from './charts/ChartMessage';
 
+// Import Colors
+import colors from '../colors';
+
 function AdminDashBoard() {
 
     const [quizzId, setQuizzId] = useState('quizz1');
@@ -61,10 +64,10 @@ function AdminDashBoard() {
                 <option value="message">Messages</option>
             </select>
 
-            { chartInfo === "time" ?  <ChartTimeToAnswer datas={datas} userId={userId} createListOfLength={createListOfLength}/> : null}
-            { chartInfo === "answer" ? <ChartCorrectAnswer datas={datas} userId={userId} createListOfLength={createListOfLength}/> : null}
-            { chartInfo === "score" ? <ChartScore datas={datas} userId={userId}/> : null}
-            { chartInfo === "message" ? <ChartMessage getAllMessages={getAllMessages} /> : null}
+            { chartInfo === "time" ?  <ChartTimeToAnswer datas={datas} userId={userId} createListOfLength={createListOfLength} colors={colors}/> : null}
+            { chartInfo === "answer" ? <ChartCorrectAnswer datas={datas} userId={userId} createListOfLength={createListOfLength} colors={colors}/> : null}
+            { chartInfo === "score" ? <ChartScore datas={datas} userId={userId} colors={colors} /> : null}
+            { chartInfo === "message" ? <ChartMessage getAllMessages={getAllMessages} colors={colors} /> : null}
         </div>
     )
 }
