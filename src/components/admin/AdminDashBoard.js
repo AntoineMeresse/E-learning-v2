@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react'
 
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';
 import OptionUserIdToName from './OptionUserIdToName.js'
 
 // Import different charts
-import ChartTimeToAnswer from './charts/ChartTimeToAnswer';
-import ChartCorrectAnswer from './charts/ChartCorrectAnswer';
-import ChartScore from './charts/ChartScore';
-import ChartMessage from './charts/ChartMessage';
+import ChartTimeToAnswer from './admin-charts/charts/ChartTimeToAnswer';
+import ChartCorrectAnswer from './admin-charts/charts/ChartCorrectAnswer';
+import ChartScore from './admin-charts/charts/ChartScore';
+import ChartMessage from './admin-charts/charts/ChartMessage';
 
 // Import Colors
-import colors from '../colors';
+import colors from '../../colors';
 import { Button } from 'react-bootstrap';
 
 import { Link } from 'react-router-dom' 
