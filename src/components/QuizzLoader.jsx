@@ -20,9 +20,11 @@ function QuizzLoader({quizzId, userId , questionnaire, setHome, userName, collec
     }
 
     function createDatas(snapshot) {
+        let res = []
         snapshot.forEach(function(doc) {
-            setQuizz([...quizz, doc.id])
+            res.push(doc.id);
         });
+        setQuizz(res);
     }
 
     useEffect(() => {
@@ -62,11 +64,11 @@ function QuizzLoader({quizzId, userId , questionnaire, setHome, userName, collec
                 (
                     !collectif ? 
                     (
-                        <Quizz quizzId="quizz1" userId={userId} questionnaire={datas} setHome={setHome} userName={userName} collectif={false}/>
+                        <Quizz quizzId={selectedQuizz} userId={userId} questionnaire={datas} setHome={setHome} userName={userName} collectif={false}/>
                     )
                     :
                     (
-                        <QuizzCollectif quizzId="quizz1" userId={userId} questionnaire={datas} setHome={setHome} userName={userName} collectif={true}/>
+                        <QuizzCollectif quizzId={selectedQuizz} userId={userId} questionnaire={datas} setHome={setHome} userName={userName} collectif={true}/>
                     )    
                 )
             }

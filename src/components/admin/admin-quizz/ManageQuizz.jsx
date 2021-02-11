@@ -17,9 +17,11 @@ function ManageQuizz() {
     }
 
     function createDatas(snapshot) {
+        let res = []
         snapshot.forEach(function(doc) {
-            setQuizz([...quizz, doc.id])
+            res.push(doc.id);
         });
+        setQuizz(res);
     }
 
     useEffect(() => {
@@ -29,6 +31,7 @@ function ManageQuizz() {
 
     return (
         <div className="manageQuizz">
+            <p>{quizz.toString()}</p>
             <p>Liste Quizz :</p>
             <ul>
                 {quizz.map((elem, index) => <li key={index}>{elem}</li>)}
