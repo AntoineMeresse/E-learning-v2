@@ -74,7 +74,7 @@ function CreateQuizz() {
                 let questionObject = {
                     question : qSplit[0],
                     choices : qSplit.slice(1,len-1),
-                    correctChoice : parseInt(qSplit[len -1])
+                    correctAnswer : parseInt(qSplit[len -1])
                 }
                 res.push(questionObject);
             }
