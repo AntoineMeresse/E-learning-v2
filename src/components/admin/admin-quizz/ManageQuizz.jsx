@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react'
+import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom' 
 
 import { useAuth } from '../../../contexts/AuthContext';
 
@@ -33,6 +35,7 @@ function ManageQuizz() {
             <ul>
                 {quizz.map((elem, index) => <li key={index}>{elem}</li>)}
             </ul>
+            <Link to="/admin/quizz/new"><Button>+</Button></Link>
         </div>
     )
 }

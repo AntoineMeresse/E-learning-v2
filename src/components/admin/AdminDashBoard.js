@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 import { Link, Route } from 'react-router-dom' 
 import ChartMain from './admin-charts/ChartMain';
 import ManageQuizz from './admin-quizz/ManageQuizz';
+import CreateQuizz from './admin-quizz/CreateQuizz';
 
 
 function AdminDashBoard() {
@@ -16,7 +17,8 @@ function AdminDashBoard() {
             </div>
 
             <Route path="/admin/charts" component={ChartMain}/>
-            <Route path="/admin/quizz" component={ManageQuizz}/>
+            <Route exact path="/admin/quizz" component={ManageQuizz}/>
+            <Route path="/admin/quizz/new" component={CreateQuizz}/>
         </div>
     )
 }
