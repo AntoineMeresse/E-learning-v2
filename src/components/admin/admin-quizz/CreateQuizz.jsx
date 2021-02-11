@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import { Button } from 'react-bootstrap';
+import { useHistory } from "react-router-dom";
 
+import { Button } from 'react-bootstrap';
 import { useAuth } from '../../../contexts/AuthContext';
 
 function CreateQuizz() {
 
+    let history = useHistory();
     const { saveNewQuizz } = useAuth();
     
     const [name, setName] = useState("");
@@ -85,10 +87,11 @@ function CreateQuizz() {
         return res;
     }
 
-    function saveQuizz(){
+    function saveQuizz() {
         let datas = toJson();
         if (datas.length >= 0 && name.length >= 0) {
             saveNewQuizz(name, datas);
+            history.push("/");
         }
     }
 
