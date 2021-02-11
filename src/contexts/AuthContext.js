@@ -72,6 +72,10 @@ export function AuthProvider({children}) {
         return firestore.collection("messages").get();
     }
 
+    function getAllQuizz() {
+        return firestore.collection("quizz-datas").get();
+    }
+
     function logout() {
         return auth.signOut();
     }
@@ -97,6 +101,7 @@ export function AuthProvider({children}) {
         query,
         firestoreTimestamp,
         getAllMessages,
+        getAllQuizz,
     }
     
     return (

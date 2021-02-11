@@ -38,7 +38,8 @@ function ChartMessage({getAllMessages, colors}) {
 
     useEffect(() => {
         fetchAllMessages();
-    }, [])
+        // eslint-disable-next-line
+    }, []) 
       
     return (
         <div className="chart-message">
