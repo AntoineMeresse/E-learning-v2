@@ -61,6 +61,27 @@ function CreateQuizz() {
         setQuizzState("btn-primary");
     }, [questionsState]);
 
+    function toJson() {
+        let res = [];
+        if (quizzState !== "btn-secondary") {
+            for (let i = 0; i<questions.length; i++) {
+                let qSplit = questions[i].split(";");
+                let len = qSplit.length;
+                let questionObject = {
+                    question : qSplit[0],
+                    choices : qSplit.slice(1,len-1),
+                    correctChoice : parseInt(qSplit[len -1])
+                }
+                let jsonObject = JSON.stringify(questionObject);
+                res.push(jsonObject);
+            }
+        }
+        else {
+            console.log("Not ok !");
+        }
+        return res;
+    }
+
     return (
         <div>
             <h2>Create a new quizz</h2>
@@ -81,7 +102,7 @@ function CreateQuizz() {
                     </>)
             }
             <Button onClick={() => newQuestion()}>+ Nouvelle question</Button>
-            <Button className={`w-100 my-3 ${quizzState}`} onClick={() => null}>Valider</Button>
+            <Button className={`w-100 my-3 ${quizzState}`} onClick={() => toJson()}>Valider</Button>
         </div>
     )
 }
