@@ -9,6 +9,7 @@ import PrivateRoute from './components/PrivateRoute'
 import Navbar from './components/Navbar';
 import React, {useState} from 'react'
 import AdminDashBoard from './components/AdminDashBoard';
+import ManageQuizz from './components/admin/admin-quizz/ManageQuizz'
 
 function App() {
   
@@ -22,9 +23,11 @@ function App() {
           <div className="w-100" style={{maxWidth: '800px'}}>
                 <Switch>
                   <PrivateRoute exact path="/" component={() => <Dashboard home={home} setHome={setHome}/>}/>
-                  <Route path="/admin" component={AdminDashBoard}/>
+                  <Route exact path="/admin" component={AdminDashBoard}/>
                   <Route path="/signup" component={Signup}/>
                   <Route path="/login" component={Login}/>
+
+                  <Route path="/admin/charts" component={ManageQuizz}/>
                 </Switch>
           </div>  
         </Container>

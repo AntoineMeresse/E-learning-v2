@@ -11,6 +11,9 @@ import ChartMessage from './charts/ChartMessage';
 
 // Import Colors
 import colors from '../colors';
+import { Button } from 'react-bootstrap';
+
+import { Link } from 'react-router-dom' 
 
 function AdminDashBoard() {
 
@@ -49,6 +52,13 @@ function AdminDashBoard() {
 
     return (
         <div className="admin-dashboard"> 
+
+            <div className="admin-dashboard-nav">
+            <Link to="/admin/charts"><Button className="w-25 mb-1 btn-primary mx-2">Manage Quizz</Button></Link>
+                <Link to="/admin/quizz"><Button className="w-25 mb-1 btn-primary mx-2">Manage Quizz</Button></Link>
+            </div>
+
+
             <select value={userId} onChange={handleChange} className="w-100 my-2">   
                 <option value=''>Select an user</option>
                 {
