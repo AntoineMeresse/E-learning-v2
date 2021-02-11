@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import Quizz from './Quizz';
-import QuizzCollectif from './QuizzCollectif'
 import questionnaire from '../datas/questionnaire.json'
 import { useAuth } from '../contexts/AuthContext'
 import { Button } from 'react-bootstrap';
+import QuizzLoader from './QuizzLoader';
 
 function Dashboard({home, setHome}) {
     
@@ -41,11 +40,11 @@ function Dashboard({home, setHome}) {
             (
                 home === 1 ? 
                 (
-                    <Quizz quizzId="quizz1" userId={userId} questionnaire={questionnaire} setHome={setHome} userName={userFullName} collectif={false}/>
+                    <QuizzLoader quizzId="quizz1" userId={userId} setHome={setHome} userName={userFullName} collectif={false}/>
                 ) 
                 :
                 (
-                    <QuizzCollectif quizzId="quizz1" userId={userId} questionnaire={questionnaire} setHome={setHome} userName={userFullName} collectif={true}/>
+                    <QuizzLoader quizzId="quizz1" userId={userId} setHome={setHome} userName={userFullName} collectif={true}/>
                 )
             )
             }
