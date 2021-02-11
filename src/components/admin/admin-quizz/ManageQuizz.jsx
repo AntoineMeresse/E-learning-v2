@@ -17,9 +17,7 @@ function ManageQuizz() {
     }
 
     function createDatas(snapshot) {
-        console.log(snapshot);
         snapshot.forEach(function(doc) {
-            console.log(doc.id);
             setQuizz([...quizz, doc.id])
         });
     }
