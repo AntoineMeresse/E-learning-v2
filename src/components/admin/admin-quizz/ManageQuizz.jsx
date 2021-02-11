@@ -31,12 +31,11 @@ function ManageQuizz() {
 
     return (
         <div className="manageQuizz">
-            <p>{quizz.toString()}</p>
             <p>Liste Quizz :</p>
             <ul>
                 {quizz.map((elem, index) => <li key={index}>{elem}</li>)}
             </ul>
-            <Link to="/admin/quizz/new"><Button>+</Button></Link>
+            <Link to="/admin/quizz/new"><Button>+ Add a new one</Button></Link>
         </div>
     )
 }

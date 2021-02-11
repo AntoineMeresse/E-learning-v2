@@ -41,7 +41,7 @@ function Chat({userName}) {
             <div className="chat-messages">
                 <span ref={bottomChat}></span>
                 { messages &&
-                    messages.map((message) => <ChatMessage key={message.id} text={message.text} isMessageOwner={currentUser.uid === message.uid } userName={message.userName}/>)
+                    messages.map((message, index) => <ChatMessage key={index} text={message.text} isMessageOwner={currentUser.uid === message.uid } userName={message.userName}/>)
                 }
             </div>
             <form className="chat-form" onSubmit={sendMessage}>

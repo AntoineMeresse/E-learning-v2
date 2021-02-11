@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import questionnaire from '../datas/questionnaire.json'
 import { useAuth } from '../contexts/AuthContext'
 import { Button } from 'react-bootstrap';
 import QuizzLoader from './QuizzLoader';
@@ -24,6 +23,7 @@ function Dashboard({home, setHome}) {
 
     useEffect(() => {
         fetchRealName(userId);
+        // eslint-disable-next-line
     }, [])
 
     return (
@@ -40,11 +40,11 @@ function Dashboard({home, setHome}) {
             (
                 home === 1 ? 
                 (
-                    <QuizzLoader quizzId="quizz1" userId={userId} setHome={setHome} userName={userFullName} collectif={false}/>
+                    <QuizzLoader userId={userId} setHome={setHome} userName={userFullName} collectif={false}/>
                 ) 
                 :
                 (
-                    <QuizzLoader quizzId="quizz1" userId={userId} setHome={setHome} userName={userFullName} collectif={true}/>
+                    <QuizzLoader userId={userId} setHome={setHome} userName={userFullName} collectif={true}/>
                 )
             )
             }
