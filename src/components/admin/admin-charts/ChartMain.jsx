@@ -13,13 +13,16 @@ import ChartMessage from './charts/ChartMessage';
 import colors from '../../../colors';
 
 function ChartMain() {
+
+    const [quizz, setQuizz] = useState([])
+    //const [selectedQuizz, setSelectedQuizz] = useState("");
     
     const [quizzId, setQuizzId] = useState('quizz1');
     
     const [userId, setUserId] = useState('');
     const [datas, setDatas] = useState({});
 
-    const { getQuizzRes, getAllMessages } = useAuth();
+    const { getQuizzRes, getAllMessages, getAllQuizz } = useAuth();
 
     const [chartInfo, setChartInfo] = useState('');
     
@@ -33,9 +36,29 @@ function ChartMain() {
         }
     }
 
+    async function fetchAllQuizz() {
+        if (quizz.length === 0) {
+            const doc = await getAllQuizz();
+            createDatas(doc);
+        }
+    }
+
+    function createDatas(snapshot) {
+        let res = []
+        snapshot.forEach(function(doc) {
+            res.push(doc.id);
+        });
+        setQuizz(res);
+    }
+
+    useEffect(() => {
+        fetchAllQuizz();
+        // eslint-disable-next-line
+    }, [])
+
     useEffect(() => {
         fetchDataQuizz();
-    }, [userId])
+    }, [userId, quizzId])
 
     function handleChange(event) {
         setUserId(event.target.value);
@@ -49,6 +72,14 @@ function ChartMain() {
     
     return (
         <div>
+
+            <select value={quizzId} onChange={(event) => setQuizzId(event.target.value)} className="w-100 my-2">   
+                <option value=''>Select a Quizz</option>
+                {
+                    quizz.map((elem, index) => <option value={elem} key={index}>{elem}</option>)
+                }
+            </select>
+
             <select value={userId} onChange={handleChange} className="w-100 my-2">   
                 <option value=''>Select an user</option>
                 {
