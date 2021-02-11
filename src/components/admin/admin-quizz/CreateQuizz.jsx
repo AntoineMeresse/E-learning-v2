@@ -1,7 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import { Button } from 'react-bootstrap';
 
+import { useAuth } from '../../../contexts/AuthContext';
+
 function CreateQuizz() {
+
+    const { saveNewQuizz } = useAuth();
     
     const [name, setName] = useState("");
     const [questions, setQuestions] = useState([]);
@@ -72,14 +76,20 @@ function CreateQuizz() {
                     choices : qSplit.slice(1,len-1),
                     correctChoice : parseInt(qSplit[len -1])
                 }
-                let jsonObject = JSON.stringify(questionObject);
-                res.push(jsonObject);
+                res.push(questionObject);
             }
         }
         else {
             console.log("Not ok !");
         }
         return res;
+    }
+
+    function saveQuizz(){
+        let datas = toJson();
+        if (datas.length >= 0 && name.length >= 0) {
+            saveNewQuizz(name, datas);
+        }
     }
 
     return (
@@ -102,7 +112,7 @@ function CreateQuizz() {
                     </>)
             }
             <Button onClick={() => newQuestion()}>+ Nouvelle question</Button>
-            <Button className={`w-100 my-3 ${quizzState}`} onClick={() => toJson()}>Valider</Button>
+            <Button className={`w-100 my-3 ${quizzState}`} onClick={() => saveQuizz()}>Valider</Button>
         </div>
     )
 }

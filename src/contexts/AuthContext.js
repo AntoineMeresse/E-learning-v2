@@ -76,6 +76,13 @@ export function AuthProvider({children}) {
         return firestore.collection("quizz-datas").get();
     }
 
+    function saveNewQuizz(quizzName, quizzDatas){
+        let resJSON = {
+            data : quizzDatas
+        }
+        return firestore.collection("quizz-datas").doc(quizzName).set(resJSON);
+    }
+
     function logout() {
         return auth.signOut();
     }
@@ -102,6 +109,7 @@ export function AuthProvider({children}) {
         firestoreTimestamp,
         getAllMessages,
         getAllQuizz,
+        saveNewQuizz,
     }
     
     return (
