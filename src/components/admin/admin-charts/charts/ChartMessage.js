@@ -3,6 +3,13 @@ import { Doughnut } from 'react-chartjs-2';
 
 function ChartMessage({getAllMessages, colors}) {
     
+    const options = {
+        title: {
+            display: true,
+            text: "Messages per users"
+           }
+    }
+
     const [data, setData] = useState([]);
     const [labels, setLabels] = useState([]);
 
@@ -44,14 +51,16 @@ function ChartMessage({getAllMessages, colors}) {
     return (
         <div className="chart-message">
             <h2>Message per user</h2>
-            <Doughnut data={{
-                        labels: labels,
-                        datasets: [{
-                            data: data,
-                            backgroundColor: colors,
-                            hoverBackgroundColor: colors,
-                        }]
-                    }}
+            <Doughnut 
+                data={{
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: colors,
+                        hoverBackgroundColor: colors,
+                    }]
+                }}
+                options= {options}
             />
         </div>
     )
