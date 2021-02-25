@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import { Button } from 'react-bootstrap';
 import QuizzLoader from './QuizzLoader';
+import CoursesList from './CoursesList';
 
 function Dashboard({home, setHome}) {
     
@@ -31,7 +32,7 @@ function Dashboard({home, setHome}) {
             { home === 0 ?
             (
                 <>
-                <Button className="w-100 mb-1 btn-secondary" onClick={() => console.log("Quizz Collectif")}>Formation</Button>
+                <Button className="w-100 mb-1 btn-primary" onClick={() => setHome(3)}>Formation</Button>
                 <Button className="w-100 mb-1 btn-secondary" onClick={() => console.log("Quizz Collectif")}>Regles</Button>
                 <Button className="w-100 mb-1 btn-primary"   onClick={() => setHome(1)}>Quizz</Button>
                 <Button className="w-100 mb-1 btn-primary"   onClick={() => setHome(2)}>QuizzCollectif</Button>
@@ -44,7 +45,9 @@ function Dashboard({home, setHome}) {
                 ) 
                 :
                 (
-                    <QuizzLoader userId={userId} setHome={setHome} userName={userFullName} collectif={true}/>
+                    home === 2 ?
+                    <QuizzLoader userId={userId} setHome={setHome} userName={userFullName} collectif={true}/> :
+                    <CoursesList/>
                 )
             )
             }

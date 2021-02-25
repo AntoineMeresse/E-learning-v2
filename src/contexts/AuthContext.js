@@ -94,6 +94,14 @@ export function AuthProvider({children}) {
         return firestore.collection("courses").doc(courseName).set(resJSON);
     }
 
+    function getAllCourses() {
+        return firestore.collection("courses").get();
+    }
+
+    function getUrlCourse(courseName) {
+        return firestore.collection("courses").doc(courseName).get();
+    }
+
     function logout() {
         return auth.signOut();
     }
@@ -122,7 +130,10 @@ export function AuthProvider({children}) {
         getAllQuizz,
         saveNewQuizz,
         getDatasQuizz,
+        // Courses
         saveNewCourse,
+        getAllCourses,
+        getUrlCourse,
     }
     
     return (
