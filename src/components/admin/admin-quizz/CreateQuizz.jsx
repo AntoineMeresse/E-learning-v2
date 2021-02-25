@@ -88,10 +88,12 @@ function CreateQuizz() {
     }
 
     function saveQuizz() {
-        let datas = toJson();
-        if (datas.length >= 0 && name.length >= 0) {
-            saveNewQuizz(name, datas);
-            history.push("/");
+        if (quizzState !== "btn-secondary") {
+            let datas = toJson();
+            if (datas.length >= 0 && name.length >= 0) {
+                saveNewQuizz(name, datas);
+                history.push("/");
+            }
         }
     }
 
