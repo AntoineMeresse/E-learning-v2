@@ -87,6 +87,13 @@ export function AuthProvider({children}) {
         return firestore.collection("quizz-datas").doc(quizzName).get();
     }
 
+    function saveNewCourse(courseName, courseUrl) {
+        let resJSON = {
+            url : courseUrl
+        }
+        return firestore.collection("courses").doc(courseName).set(resJSON);
+    }
+
     function logout() {
         return auth.signOut();
     }
@@ -115,6 +122,7 @@ export function AuthProvider({children}) {
         getAllQuizz,
         saveNewQuizz,
         getDatasQuizz,
+        saveNewCourse,
     }
     
     return (
